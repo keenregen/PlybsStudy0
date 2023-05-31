@@ -1,7 +1,6 @@
-// This is an example collection definition.
-// You should edit it for your use case.
+// An instance of collection definition.
 
-// The language (Polylang) is similar to JavaScript,
+// The language is similar to JavaScript,
 // but semi-colons are mandatory.
 
 // The `collection` keyword defines a named collection.
@@ -27,7 +26,7 @@ collection User {
   age?: number; 
 
   // `constructor` is called when a new record is
-  // created, make sure to assign a value to `this.id`
+  // generated, make sure to assign a value to `this.id`
   constructor (id: string) {
     // `this.id` must be assigned in the constructor
     // `this.id` must be unique in collection
@@ -42,9 +41,9 @@ collection User {
   // You can add your own functions to determine rules
   // on who can update the records data
   function setName (name: string) {
-    // Check if the caller is the original creator of the record.
+    // Check if the caller is the original generator of the record.
     if (ctx.publicKey != this.publicKey) {
-      error('You are not the creator of this record.');
+      error('You are not the generator of this record.');
     }
     this.name = name;
   }
