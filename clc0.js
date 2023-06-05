@@ -1,3 +1,6 @@
+// The language (Polylang) is similar to JavaScript,
+// but semi-colons are mandatory.
+
 // initialize the library
 
 import { Polybase } from "@polybase/client";
@@ -5,7 +8,7 @@ import { ethPersonalSign } from '@polybase/eth'
 import 'dotenv/config' 
 
 const db = new Polybase({
-  defaultNamespace: "study-zero",
+  defaultNamespace: "study-trial",
   signer: (data) => {
     return {
       h: 'eth-personal-sign',
