@@ -3,7 +3,7 @@ import { ethPersonalSign } from '@polybase/eth'
 import 'dotenv/config'
 
 const db = new Polybase({
-    defaultNamespace: "study-trial-one",
+    defaultNamespace: "study-trial-five",
     signer: (data) => {
         return {
             h: 'eth-personal-sign',
@@ -18,17 +18,16 @@ await db.applySchema(`
   @public
   collection User {
     id: string;
-    publicKey: PublicKey;
     name?: string;
     age?: number; 
-    constructor (id: string) {
+    constructor (id: string, name?:string) {
         this.id = id;
-        this.publicKey = ctx.publicKey;
+        this.name = name;
     }
-    function setName (name: string) {
-        if (ctx.publicKey != this.publicKey) {
-          error('You are not the generator of this record.');
-        }
+    function setId (id: string) {
+        this.id = id;
+      }
+      function setName (name: string) {
         this.name = name;
       }
     }
